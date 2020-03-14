@@ -1,0 +1,7 @@
+README.md
+setup.py
+src/akaraike.py
+src/akaraike.egg-info/PKG-INFO
+src/akaraike.egg-info/SOURCES.txt
+src/akaraike.egg-info/dependency_links.txt
+src/akaraike.egg-info/top_level.txt
