@@ -4,27 +4,26 @@ import sys
 
 class PasswordGenerator:
 
-    # string of upper characters
+    # String of upper characters
     upper_characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
-    # string of lower characters
+    # String of lower characters
     lower_characters = 'abcdefghijklmnopqrstuvwxyz'
 
-    # string of numbers
+    # String of numbers
     numbers = '0123456789'
 
-    #string of special characters
-    specials = '@-_+=%^&*#!'
+    # String of special characters
+    specials = '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'
 
-    # charset
+    # Charset
     charset = None
 
-    #charset length - the length of the password string to generate
+    # Charset length - the length of the password string to generate
     charset_length = 0
 
-    
-    def generate_password(self):
 
+    def generate_password(self):
         """
         Performs the computation that genarates a
         password
@@ -37,10 +36,12 @@ class PasswordGenerator:
                 x = randint(0, (self.charset.__len__() - 1))
                 password += self.charset[x]
             return password
-            
 
 
     def set_charset_length(self, length):
+        """
+        Defines the lenght of the Password
+        """
         try:
             self.charset_length = int(length)
         except ValueError:
@@ -48,16 +49,15 @@ class PasswordGenerator:
 
 
     def set_charset_types(self, type):
-        
+        """ Sets the type of character set to be used by password geenrator"""
         try:
-
-            #convert charset types into a list
+            # Convert charset types into a list
             type_list = list(type)
 
-            #placeholder for concatenated charset string
+            # Placeholder for concatenated charset string
             charset = ""
 
-            #an internal function to  ensure that the user does not enter wrong values
+            # Internal function to ensure that the user enters the right values
             self.clean_list(type_list)
 
             if len(type_list) > 4:
@@ -70,7 +70,7 @@ class PasswordGenerator:
             if 'numbers' in type_list:
                 charset += self.numbers
             if 'specials' in type_list:
-               charset += self.specials
+                charset += self.specials
 
             self.charset = charset
 
@@ -79,7 +79,9 @@ class PasswordGenerator:
 
 
     def clean_list(self, type_list):
+        """
+        A function to  ensure that the user enter the right values
+        """
         for item in type_list:
             if item != 'lowers' and item != 'uppers' and item != 'numbers' and item != 'specials':
                 sys.exit("Unrecognized charset type \'" + item + "\'")
-
